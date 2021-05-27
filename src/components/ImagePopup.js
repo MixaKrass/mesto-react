@@ -1,6 +1,6 @@
 
 
-const PopupImage = ({card, onClose}) => {
+const ImagePopup = ({card, onClose}) => {
   return (
     <div className={card.isOpened ? `popup popup_opacity popup_opened` : `popup popup_opacity`}>
       <div className="popup__content">
@@ -15,4 +15,4 @@ const PopupImage = ({card, onClose}) => {
   )
 }
 
-export default PopupImage
+export default ImagePopup
