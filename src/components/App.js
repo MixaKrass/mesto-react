@@ -3,7 +3,7 @@ import Footer from "./Footer";
 import Main from "./Main";
 import {useState } from "react";
 import PopupWithForm from "./PopupWithForm";
-import PopupImage from "./ImagePopup";
+import ImagePopup from "./ImagePopup";
 import PopupConfirm from "./PopupConfirm";
 
 
@@ -86,7 +86,7 @@ function App() {
     </PopupConfirm>
 
 
-    <PopupImage onClose={closeAllPopups} card={selectedCard} />
+    <ImagePopup onClose={closeAllPopups} card={selectedCard} />
 
   </div>
   );
