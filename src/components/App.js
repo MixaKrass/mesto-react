@@ -1,10 +1,10 @@
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Main from "./components/Main";
+import Header from "./Header";
+import Footer from "./Footer";
+import Main from "./Main";
 import {useState } from "react";
-import PopupWithForm from "./components/PopupWithForm";
-import PopupImage from "./components/PopupImage";
-import PopupConfirm from "./components/PopupConfirm";
+import PopupWithForm from "./PopupWithForm";
+import PopupImage from "./PopupImage";
+import PopupConfirm from "./PopupConfirm";
 
 
 

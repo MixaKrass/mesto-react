@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import api from "../utils/Api";
+import api from "../utils/api";
 import Card from "../components/Card";
 
 const Main = ({onEditAvatar, onEditProfile, onAddPlace, onCardClick, onConfirmPopup}) => {
