@@ -3,7 +3,7 @@ import Footer from "./Footer";
 import Main from "./Main";
 import {useState } from "react";
 import PopupWithForm from "./PopupWithForm";
-import PopupImage from "./PopupImage";
+import PopupImage from "./ImageImage";
 import PopupConfirm from "./PopupConfirm";
 
 
