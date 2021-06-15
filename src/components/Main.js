@@ -25,6 +25,14 @@ const Main = ({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, onConfirmP
     });
 } 
 
+// удаление карточки
+const handleCardDelete = (cardId) => {
+  api.removeCard(cardId).then(() => {
+    setCards((state) => state.filter(c => c._id !== cardId))
+  })
+}
+
+
   return (
     <main className="main">
       <section className="profile">
@@ -45,7 +53,7 @@ const Main = ({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, onConfirmP
       </section>
 
       <section className="cards">
-        {cards.map(card => (<Card key={card._id} card={card} onCardClick={onCardClick} onConfirmPopup={onConfirmPopup} onCardLike={handleCardLike} />))}
+        {cards.map(card => (<Card key={card._id} card={card} onCardClick={onCardClick} onConfirmPopup={onConfirmPopup} onCardLike={handleCardLike} onCardDelete={handleCardDelete} />))}
       </section>
     </main>
   )
