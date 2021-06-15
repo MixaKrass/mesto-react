@@ -53,23 +53,18 @@ class Api {
     .then(this._checkError);
   }
 
-  // ставим лайк 
-  putLike(cardId) {
-    const newConfing = {
+  // ставим и удаляем лайк 
+  changeLikeCardStatus(cardId, isLiked) {
+    const putOptions = {
       headers: this._headers,
       method: 'PUT', 
     }
-    return fetch(`https://mesto.nomoreparties.co/v1/cohort-23/cards/likes/${cardId}`, newConfing)
-    .then(this._checkError);
-  }
-
-  // удаляем лайк
-  removeLike(cardId) {
-    const newConfing = {
+   
+    const delOptions = {
       headers: this._headers,
       method: 'DELETE', 
     }
-    return fetch(`https://mesto.nomoreparties.co/v1/cohort-23/cards/likes/${cardId}`, newConfing)
+    return fetch(`https://mesto.nomoreparties.co/v1/cohort-23/cards/likes/${cardId}`, isLiked ? delOptions : putOptions)
     .then(this._checkError);
   }
 

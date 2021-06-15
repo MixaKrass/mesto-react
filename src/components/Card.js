@@ -1,10 +1,15 @@
 import CurrentUserContext from "../context/CurrentUserContext";
 import { useContext } from "react";
 
-const Card = ({ card, onCardClick, onConfirmPopup }) => {
+const Card = ({ card, onCardClick, onCardLike, onConfirmPopup }) => {
   const currentUserId = useContext(CurrentUserContext)._id
+
   const handleClick = () => {
     onCardClick(card)
+  }
+
+  const handleLikeClick = () => {
+    onCardLike(card)
   }
 
 // проверка своей карточки
@@ -18,7 +23,7 @@ const isLiked = card.likes.some(i => i._id === currentUserId)
       <div className="card__info">
         <h2 className="card__title">{card.name}</h2>
         <div className="card__like-cont">
-          <button type="button" className={`card__like ${isLiked ? 'card__like_active' : ''}`}></button>
+          <button type="button" onClick={handleLikeClick} className={`card__like ${isLiked ? 'card__like_active' : ''}`}></button>
           <span className="card__likes-container">{card.likes.lenght} </span>
         </div>
       </div>

@@ -4,6 +4,7 @@ import Card from "../components/Card";
 import CurrentUserContext from "../context/CurrentUserContext";
 
 const Main = ({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, onConfirmPopup }) => {
+  const currentUserId = useContext(CurrentUserContext)._id
   const [cards, setCards] = useState([])
   const { name, about, avatar} = useContext(CurrentUserContext)
 
@@ -14,7 +15,15 @@ const Main = ({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, onConfirmP
       .catch(err => console.log(err))
   }, [])
 
-
+  function handleCardLike(card) {
+    // Снова проверяем, есть ли уже лайк на этой карточке
+    const isLiked = card.likes.some(i => i._id === currentUserId);
+    
+    // Отправляем запрос в API и получаем обновлённые данные карточки
+    api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
+        setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+    });
+} 
 
   return (
     <main className="main">
@@ -36,7 +45,7 @@ const Main = ({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, onConfirmP
       </section>
 
       <section className="cards">
-        {cards.map(card => (<Card key={card._id} card={card} onCardClick={onCardClick} onConfirmPopup={onConfirmPopup} />))}
+        {cards.map(card => (<Card key={card._id} card={card} onCardClick={onCardClick} onConfirmPopup={onConfirmPopup} onCardLike={handleCardLike} />))}
       </section>
     </main>
   )
