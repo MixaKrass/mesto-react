@@ -1,12 +1,11 @@
 import Header from "./Header";
 import Footer from "./Footer";
 import Main from "./Main";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
-
-
-
+import api from "../utils/api";
+import CurrentUserContext from "../context/CurrentUserContext";
 
 
 function App() {
@@ -15,6 +14,15 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false)
   const [selectedCard, setSelectedCard] = useState({ isOpened: false })
   const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState(false)
+
+  const [currentUser, setCurrentUser] = useState({})
+  useEffect(() => {
+    api.getUserInfo()
+    .then((data) => {
+      setCurrentUser(data)
+    })
+    .catch(e => console.log(e))
+  }, [])
 
   //обработчик картинки
   const handleCardClick = ({ link, name, isOpened }) => {
@@ -45,6 +53,7 @@ function App() {
   }
 
   return (
+    <CurrentUserContext.Provider value={currentUser}>
     <div className="body">
       <div className="page">
         <Header />
@@ -89,6 +98,7 @@ function App() {
       <ImagePopup onClose={closeAllPopups} card={selectedCard} />
 
     </div>
+    </CurrentUserContext.Provider>
   );
 }
 
