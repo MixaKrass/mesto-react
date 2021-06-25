@@ -79,15 +79,12 @@ class Api {
     .then(this._checkError);
   }
 
-  //отправляем информацию о пользователе на сервер
-  patchCard(data) {
+  //отправляем информацию о фото и пользователе на сервер
+  patchCard(inputsValue) {
     const newConfing = {
       method: 'POST',
       headers: this._headers,
-      body: JSON.stringify({
-        name: data['InputNameCard'],
-        link: data['InputImgCard']
-      }),
+      body: JSON.stringify(inputsValue),
       
   }
   return fetch('https://mesto.nomoreparties.co/v1/cohort-23/cards', newConfing)
