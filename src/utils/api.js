@@ -55,28 +55,25 @@ class Api {
 
   // ставим и удаляем лайк 
   changeLikeCardStatus(cardId, isLiked) {
-    const putOptions = {
+    const updateLike = {
       headers: this._headers,
       method: 'PUT', 
     }
    
-    const delOptions = {
+    const deleteLike = {
       headers: this._headers,
       method: 'DELETE', 
     }
-    return fetch(`https://mesto.nomoreparties.co/v1/cohort-23/cards/likes/${cardId}`, isLiked ? delOptions : putOptions)
+    return fetch(`https://mesto.nomoreparties.co/v1/cohort-23/cards/likes/${cardId}`, isLiked ? deleteLike : updateLike)
     .then(this._checkError);
   }
 
   // отправляем информацию 
-  patchProfileInfo(data) {
+  patchProfileInfo(userData) {
     const newConfing = {
       method: 'PATCH',
       headers: this._headers,
-      body: JSON.stringify({
-        name: data['input-name'],
-        about: data['input-about']
-      }),
+      body: JSON.stringify(userData),
     }
     return fetch('https://mesto.nomoreparties.co/v1/cohort-23/users/me', newConfing)
     .then(this._checkError);
