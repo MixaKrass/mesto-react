@@ -18,7 +18,7 @@ const handleSubmit = (e) => {
     <PopupWithForm
       name="refresh" title="Обновить аватар" 
       isOpen={isOpen} container="popup__container popup__form" 
-      onClose={onClose} handleSubmit = {handleSubmit}>
+      onClose={onClose} handleSubmit = {handleSubmit} buttonText='Сохранить'>
     <input 
       type="url" className="popup__input" 
       name="avatar" id="input__popup-avatar" 

@@ -27,18 +27,19 @@ return (
   <PopupWithForm
     name="add" title="Новое место" 
     isOpen={isOpen} container="popup__container popup__form" 
-    onClose={onClose} handleSubmit={handleSubmit}>
+    onClose={onClose} handleSubmit={handleSubmit} buttonText='Сохранить'>
   <input 
     name="InputNameCard" type="text" 
     id="input__popup-CardName" className="popup__input" 
     placeholder="Название места" onChange={handleNameChange}
-    minLength="2" maxLength="40" required />
+    value={name || ''} minLength="2" 
+    maxLength="40" required />
   <span 
     id="input__popup-CardName-error" className="popup__error" />
   <input 
     type="url" className="popup__input" 
     name="InputImgCard" id="input__popup-CardImg" 
-    placeholder="ссылка на картинку" 
+    placeholder="ссылка на картинку" value={link || ''}
     onChange={handlePlaceChange} required />
   <span 
     id="input__popup-CardImg-error" className="popup__error" />

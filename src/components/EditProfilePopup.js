@@ -30,7 +30,8 @@ return(
 <PopupWithForm
   name="edit" title="Редактировать профиль"   
   container="popup__container popup__form" 
-  handleSubmit = {handleSubmit} isOpen={isOpen} onClose={onClose}>
+  handleSubmit = {handleSubmit} isOpen={isOpen} 
+  onClose={onClose} buttonText='Редактировать' >
 
 <input onChange={onChangeName} value={name || ''} 
   type="text" className="popup__input" 
